@@ -1,19 +1,17 @@
 {
   "name": "asterism-plugin-template",
-  "version": "0.1.3",
+  "version": "1.0.3",
   "description": "Base template to build a plugin for asterism",
   "author": "Xavier Gouley <gxapplications@gmail.com>",
   "contributors": [],
   "license": "CC-BY-NC-SA-4.0",
   "scripts": {
-    "dist": "rimraf dist && babel lib --out-dir dist",
-    "wrap:install": "cd ../asterism/ && npm install --no-save file:../asterism-plugin-template",
-    "wrap:clean": "cd ../asterism/ && rimraf node_modules/asterism-plugin-template/dist",
-    "wrap:link": "cd ../asterism/ && ln -s ../../../asterism-plugin-template/dist/ node_modules/asterism-plugin-template/dist",
-    "wrap": "npm run dist && npm run wrap:install && npm run wrap:clean && npm run wrap:link",
+    "dist": "rimraf dist && babel lib --comments false --compact true --out-dir dist",
+    "wrap": "npm run dist && cd ../asterism/ && npm install --no-save file:../asterism-plugin-template",
     "start": "cd ../asterism/ && cross-env ASTERISM_PLUGINS=asterism-plugin-template npm start",
     "start:debug": "cd ../asterism/ && cross-env ASTERISM_PLUGINS=asterism-plugin-template npm run start:debug",
     "prepublishOnly": "npm run dist",
+    "lint": "standard --verbose | snazzy",
     "validate": "npm ls"
   },
   "main": "dist/index.js",
@@ -33,14 +31,21 @@
     "domotics"
   ],
   "engines": {
-    "node": ">= 7.0.0",
-    "npm": ">= 3.10.8"
+    "node": ">= 8.9.4",
+    "npm": ">= 5.6.0"
   },
   "babel": {
     "presets": [
-      "node7",
-      "es2017-node7/webpack2",
-      "react-es2015"
+      [
+        "env",
+        { "targets": {
+          "chrome": "71"
+        } }
+      ],
+      "react"
+    ],
+    "plugins": [
+      "transform-object-rest-spread"
     ],
     "env": {
       "development": {
@@ -48,9 +53,9 @@
           [
             "css-modules-transform",
             {
-              "preprocessCss": "./babel-sass-preprocess.js",
+              "preprocessCss": "../asterism-plugin-template/babel-sass-preprocess.js",
               "generateScopedName": "[local]",
-              "extractCss": "./dist/styles.css",
+              "extractCss": "../asterism-plugin-template/dist/styles.css",
               "extensions": [
                 ".css",
                 ".sass",
@@ -63,31 +68,31 @@
     }
   },
   "dependencies": {
-
+    "uuid": "^3.0.1"
   },
   "devDependencies": {
-    "asterism-plugin-library": ">= 1.0.3",
-    "babel-cli": "^6.24.1",
-    "babel-core": "^6.4.5",
-    "babel-plugin-css-modules-transform": "^1.2.7",
-    "babel-preset-es2017-node7": "^0.5.2",
-    "babel-preset-node7": "^1.5.0",
-    "babel-preset-react-es2015": "^1.3.0",
-    "cross-env": "^1.0.7",
+    "asterism-plugin-library": ">= 2.0.0",
+    "babel-cli": "6.26.x",
+    "babel-core": "6.26.x",
+    "babel-plugin-css-modules-transform": "1.5.0",
+    "babel-plugin-transform-object-rest-spread": "6.23.x",
+    "babel-preset-env": "1.6.x",
+    "babel-preset-react": "6.24.x",
+    "cross-env": "^5.x",
     "express": "4.16.x",
-    "node-sass": "^4.5.3",
+    "node-sass": "4.9.x",
     "prop-types": "15.6.x",
-    "react": "15.6.x",
-    "react-materialize": "^1.0.10",
-    "rimraf": "^2.5.2"
+    "react": "16.2.x",
+    "react-materialize": "2.4.x",
+    "rimraf": "2.x",
   },
   "peerDependencies": {
-    "asterism": ">= 0.4.4",
-    "asterism-plugin-library": ">= 1.0.3",
+    "asterism": ">= 1.0.0",
+    "asterism-plugin-library": ">= 2.0.0",
     "express": "4.16.x",
     "prop-types": "15.6.x",
-    "react": "15.6.x",
-    "react-materialize": "^1.0.10"
+    "react": "16.2.x",
+    "react-materialize": "2.4.x"
   },
   "directories": {
     "lib": "./lib",

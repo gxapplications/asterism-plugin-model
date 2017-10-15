@@ -15,13 +15,7 @@ const builder = new ItemFactoryBuilder()
     { w: 1, h: 2 },
     { w: 1, h: 3 },
     { w: 2, h: 3 },
-    { w: 2, h: 4 },
-    { w: 2, h: 5 },
-    { w: 2, h: 6 },
-    { w: 3, h: 4 },
-    { w: 3, h: 5 },
-    { w: 3, h: 6 },
-    { w: 3, h: 7 }
+    { w: 2, h: 4 }
   ])
   .build()
 
