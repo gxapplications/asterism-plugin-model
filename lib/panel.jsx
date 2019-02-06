@@ -17,7 +17,6 @@ class TemplatePanel extends React.Component {
 
   render () {
     const { theme, animationLevel } = this.props
-    const { elements, currentElement, deleteConfirmation } = this.state
     const waves = animationLevel >= 2 ? 'light' : undefined
 
     return (

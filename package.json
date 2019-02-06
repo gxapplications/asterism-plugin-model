@@ -1,6 +1,6 @@
 {
   "name": "asterism-plugin-template",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Base template to build a plugin for asterism",
   "author": "Xavier Gouley <gxapplications@gmail.com>",
   "contributors": [],
@@ -71,7 +71,7 @@
     "uuid": "^3.0.1"
   },
   "devDependencies": {
-    "asterism-plugin-library": ">= 2.0.0",
+    "asterism-plugin-library": ">= 2.0.1",
     "babel-cli": "6.26.x",
     "babel-core": "6.26.x",
     "babel-plugin-css-modules-transform": "1.5.0",
@@ -84,11 +84,11 @@
     "prop-types": "15.6.x",
     "react": "16.2.x",
     "react-materialize": "2.4.x",
-    "rimraf": "2.x",
+    "rimraf": "2.x"
   },
   "peerDependencies": {
     "asterism": ">= 1.0.0",
-    "asterism-plugin-library": ">= 2.0.0",
+    "asterism-plugin-library": ">= 2.0.1",
     "express": "4.16.x",
     "prop-types": "15.6.x",
     "react": "16.2.x",

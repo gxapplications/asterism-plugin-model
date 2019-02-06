@@ -11,6 +11,14 @@ class AnimatedFrameSettingPanel extends ItemSettingPanel {
   constructor (props) {
     super(props)
     this.state.elements = []
+
+    this.receiveNewParams(this.state.params)
+  }
+
+  receiveNewParams (params) {
+    this.setState({
+      params
+    })
   }
 
   componentDidMount () {
@@ -64,10 +72,6 @@ class AnimatedFrameSettingPanel extends ItemSettingPanel {
   save () {
     const params = { ...this.state.params, title: this._title.state.value, id: this._id.state.value }
     this.next(AnimatedFrameItem, params)
-  }
-
-  gotToSettings () {
-    // TODO : close this dialog, and open settings and go to the right tab!
   }
 }
 
